@@ -1,6 +1,5 @@
 <!doctype html>
-<html class="no-js" lang="">
-
+<html lang="en">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -25,10 +24,43 @@
 
   <!-- Add your site or application content here -->
   <form>
-    <input id="getUserInput">
+    <label for="getUserInput">Enter Binary</label>
+    <input id="getUserInput" placeholder="100">
   </form>
-  <button id="btnSubmit" onclick=""
-  <script src="js/app.js" id="applications"></script>
+  <p id="confirmBinary">j</p>
+  <button id="btnSubmit" onclick="handleSubmit()">Convert Binary</button>
+  <script>
+
+    let confirmBinary = document.getElementById("confirmBinary")
+    let userInput = document.getElementById('getUserInput').value
+    let errorText = "";
+
+    function checkForCharacters(userBinary){
+      let characterFound = userBinary.search(["/^[01]+$"]) //This regex only searches for 0's and 1's
+      return characterFound !== -1; // If the character finds -1 then it will return true
+    }
+    function calculate(userBinary){
+      let total = 0
+      for (let exponent = userBinary.length - 1; exponent >= 0 ; exponent--)
+      {
+        let num = parseInt(userBinary.charAt(userBinary.length - 1 - exponent));
+        total += num * Math.pow(2, exponent)
+      }
+      return total;
+    }
+    function handleSubmit(){
+      userInput = document.getElementById('getUserInput').value; // Get updated user input value
+      let val = checkForCharacters(userInput);
+      let u = calculate(userInput);
+
+      if (isNaN(u)) {
+        errorText = "User should enter a number between 0 and 1";
+        confirmBinary.textContent = errorText; // Set error text content
+      } else {
+        confirmBinary.textContent = u; // Set converted decimal value
+      }
+    }
+  </script>
 
 </body>
 
