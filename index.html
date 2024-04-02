@@ -23,13 +23,16 @@
 <body>
 
   <!-- Add your site or application content here -->
-  <form>
-    <label for="getUserInput">Enter Binary</label>
-    <input id="getUserInput" placeholder="100">
-  </form>
-  <p id="confirmBinary">j</p>
-  <button id="btnSubmit" onclick="handleSubmit()">Convert Binary</button>
-  <script>
+  <div class="container">
+    <form>
+      <label for="getUserInput">Enter Binary</label>
+      <input id="getUserInput" placeholder="100">
+    </form>
+
+    <button id="btnSubmit" onclick="handleSubmit()">Convert</button>
+  </div>
+  <p id="confirmBinary"></p>
+   <script>
 
     let confirmBinary = document.getElementById("confirmBinary")
     let userInput = document.getElementById('getUserInput').value
